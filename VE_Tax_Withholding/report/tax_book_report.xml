@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <report 
+        id="action_report_tax_book_report"
+        model="tax.purchases_book_wizard"
+        string="Libro Contable"
+        report_type="qweb-pdf"
+        name="VE_Tax_Withholding.report_book_document"
+        file="VE_Tax_Withholding.report_book"
+    />
+
+    <template id="report_book_document">
+        <t t-call="web.html_container">
+        
+            <t t-call="web.external_layout">
+
+                <!-- SEPARACION DE CONTENIDO TITULO-->
+                <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+                    <h4 class="nt16"> LIBRO DE COMPRA </h4>
+                    <div class="row nt32 nb32" id="withholding_info">
+                        <div class="col-auto mw-100 mb-2" style="font-size:12px;">
+                            <p>
+                                <strong>PRUEBA</strong>
+                            </p>
+                            <p style="margin-top: -15px;">
+                             
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- SEPARACION DE CONTENIDO INFORMACION DEL CLIENTE -->
+                <div >
+                    <div style="width: 60%; float:left;">
+                        <!-- comentador por los momentos
+                        <t t-set="address" />
+                        <span style=" font-size: 20px !important; font-weight:bold !important;"> Informacion del Sujeto Retenido</span>
+                        <address t-field="doc.related_invoice.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                        <div t-if="doc.related_invoice.partner_id.vat" class="mt16">
+                            <t t-if="doc.related_invoice.company_id.country_id.vat_label" t-esc="doc.related_invoice.company_id.country_id.vat_label" id="inv_tax_id_label"/>
+                            <t t-else="">Rif:</t>
+                            <span t-field="doc.related_invoice.partner_id.vat"/>
+                        </div>
+                        -->
+                        <p >INFORMACION DE LA EMPRESA / ENCABEZADO</p>
+                    </div>
+                    <div style="width: 40%; min-height: 50px; float:left;">
+                        <h4>COMPROBANTE #: <p> TEST 1651166646</p></h4>
+
+                        <p style="margin-top: -15px;">Periodo Fiscal: Octubre 2021</p>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+                <!-- INFORMACION PREVIA A LA TABLA-->
+                <div>
+                    <div style="width: 50%; float:left; text-align: justify; margin-bottom: 20px; padding:10px;">
+                        <p>Concepto: 852852852 </p>
+                    </div>
+                </div>
+                <div class="page" style="margin-bottom:20px;">
+                    <div class="row">
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th name="th_invoice">No Factura</th>
+                                    <th name="th_date">Fecha</th>
+                                    <th name="th_type">No Control</th>
+                                    <th name="th_invoice_ammount">Importe de Factura</th>
+                                    <th name="th_taxable_income">Base Imponible</th>
+                                    <th name="th_tax_rate">% Ret</th>
+                                    <th name="th_temp">Menos Sustraendo</th>
+                                    <th name="th_tax_withheld">Impuesto Retenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td name="th_invoice">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_date">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_control_number">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_invoice_ammount">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_taxable_income">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_rate">
+                                        <p> TEST </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> - </p>
+                                    </td>
+                                    <td name="th_tax_withheld">
+                                        <p> TEST </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:30%; min-height: 20px; border-top: 4px solid black; float: right;">
+                        <p>Importe Neto:  6526 Bs.</p>
+                    </div>
+                </div>
+                <!-- SECTION PARA COLOCAR SELLOS Y FIRMAS -->
+                <br></br>
+                <div style="margin-top: 20px;">
+                    <div style="width:40%; height: 100px; border: 1px solid black; float: left; padding: 10px; font-size: 12px;">
+                        <p> AGENTE DE RETENCION (SELLO,FECHA Y FIRMA) </p>
+                    </div>
+                    <div style="width:20%; border: 1px solid transparent; float: left;"></div>
+                    <div style="width:40%; height: 100px; border: 1px solid black; float: left; padding: 10px; font-size: 12px;">
+                        <p> BENEFICIARIO</p>
+                    </div>
+                </div>
+            </t>
+        
+    </t>
+    </template>
+
+</odoo>
